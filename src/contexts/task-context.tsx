@@ -1,7 +1,7 @@
 import React from "react";
 import { Task } from "../models/Task";
 
-interface TaskContextObj {
+export interface TaskContextObj {
   tasks: Task[];
   addTask: (task: Task) => void;
   //   updateTask: (id: string) => void;

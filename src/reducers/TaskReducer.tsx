@@ -15,6 +15,9 @@ const TaskReducer = (state: typeof initialState, action: ACTIONTYPE) => {
         tasks: [...state.tasks, action.payload],
       };
     }
+    default: {
+      throw new Error();
+    }
   }
 };
 
