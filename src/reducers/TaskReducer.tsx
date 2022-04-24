@@ -8,10 +8,12 @@ const initialState = {
 
 type ACTIONTYPE = { type: "ADD"; payload: Task };
 
-const TaskReducer = (state, action) => {
+const TaskReducer = (state: typeof initialState, action: ACTIONTYPE) => {
   switch (action.type) {
     case "ADD": {
-      return state;
+      return {
+        tasks: [...state.tasks, action.payload],
+      };
     }
   }
 };
