@@ -4,16 +4,16 @@ import { Task } from "../models/Task";
 export interface TaskContextObj {
   tasks: Task[];
   addTask: (task: Task) => void;
+  removeTask: (content: string) => void;
   //   updateTask: (id: string) => void;
-  //   removeTask: (id: string) => void;
   //   doneTask: () => void;
 }
 
 const TaskContext = React.createContext<TaskContextObj>({
   tasks: [],
   addTask: () => {},
+  removeTask: (content: string) => {},
   //   updateTask: (id: string) => {},
-  //   removeTask: (id: string) => {},
   //   doneTask: () => {},
 });
 

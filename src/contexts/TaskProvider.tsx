@@ -5,12 +5,12 @@ import { TaskContextObj } from "./task-context";
 import { add } from "../actions/task-actions";
 import { Task, initialStateType } from "../models/Task";
 
-type children = {
-  children: ReactNode;
-};
-type Props = {
-  children: JSX.Element;
-};
+// type children = {
+//   children: ReactNode;
+// };
+// type Props = {
+//   children: JSX.Element;
+// };
 
 // original code
 // const TaskProvider: React.FC<> = ({ children }: Props) => {
@@ -26,11 +26,15 @@ const TaskProvider: React.FC<{ children: ReactNode }> = (props) => {
     dispatch({ type: "ADD", payload: task });
   };
 
+  const handleRemoveTask = (content: string) => {
+    dispatch({ type: "REMOVE", payload: content });
+  };
+
   const taskContextValue: TaskContextObj = {
     tasks: tasksState.tasks,
     addTask: handleAddTask,
+    removeTask: handleRemoveTask,
     // updateTask: (id: string) => {},
-    // removeTask: (id: string) => {},
     // doneTask: () => {},
   };
 

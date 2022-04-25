@@ -5,7 +5,9 @@ const reducerState: initialStateType = {
   tasks: [],
 };
 
-type ACTIONTYPE = { type: "ADD"; payload: Task };
+type ACTIONTYPE =
+  | { type: "ADD"; payload: Task }
+  | { type: "REMOVE"; payload: string };
 
 // original code
 const TaskReducer = (state: typeof reducerState, action: ACTIONTYPE) => {
@@ -13,6 +15,15 @@ const TaskReducer = (state: typeof reducerState, action: ACTIONTYPE) => {
     case "ADD": {
       return {
         tasks: [...state.tasks, action.payload],
+      };
+    }
+    case "REMOVE": {
+      const deletingTaskContent = action.payload;
+      const renewedTasks = state.tasks.filter(
+        (task) => task.content !== deletingTaskContent
+      );
+      return {
+        tasks: renewedTasks,
       };
     }
     default: {
