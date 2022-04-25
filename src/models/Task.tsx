@@ -1,5 +1,4 @@
 export interface Task {
-  taskId: string;
   content: string;
   dueDate: string;
   isDone: boolean;
@@ -7,5 +6,4 @@ export interface Task {
 
 export type initialStateType = {
   tasks: Task[];
-  // addTask: (task: Task) => void;
 };

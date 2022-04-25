@@ -1,10 +1,6 @@
 import React, { ReducerState } from "react";
 import { Task, initialStateType } from "../models/Task";
 
-// const initialState = {
-//   tasks: [],
-//   addTask: (task: Task) => {},
-// };
 const reducerState: initialStateType = {
   tasks: [],
 };
@@ -12,7 +8,6 @@ const reducerState: initialStateType = {
 type ACTIONTYPE = { type: "ADD"; payload: Task };
 
 // original code
-// const TaskReducer = (state: typeof initialStateType, action: ACTIONTYPE) => {
 const TaskReducer = (state: typeof reducerState, action: ACTIONTYPE) => {
   switch (action.type) {
     case "ADD": {

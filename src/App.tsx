@@ -1,10 +1,13 @@
 import React from "react";
 import Main from "./components/Main/Main";
+import TaskProvider from "./contexts/TaskProvider";
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <TaskProvider>
+        <Main />
+      </TaskProvider>
     </div>
   );
 }
