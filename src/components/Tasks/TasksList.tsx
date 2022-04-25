@@ -78,9 +78,10 @@ const TasksList = () => {
                 borderRadius: "8px",
                 cursor: "pointer",
               }}
-              // onKeyDown={handleCheck}s
             >
-              {!isEditing ? "Edit" : "UPDATE"}
+              {/* original code */}
+              {/* {!isEditing ? "Edit" : "UPDATE"} */}
+              {isEditing && index === selected ? "UPDATE" : "Edit"}
             </span>
             <span
               style={{
