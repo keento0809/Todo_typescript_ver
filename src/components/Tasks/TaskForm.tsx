@@ -21,11 +21,12 @@ const TaskForm = () => {
       dueDate: "22/03/31",
       isDone: false,
     });
+    taskInputRef.current!.value = "";
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" ref={taskInputRef} />
+      <input type="text" ref={taskInputRef} style={{ outline: "none" }} />
       <button>ADD</button>
     </form>
   );
