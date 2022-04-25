@@ -1,6 +1,8 @@
 import { Task } from "../models/Task";
 
-export const add = (task: Task) => {
+type add = (task: Task) => {};
+
+export const add: add = (task) => {
   return {
     type: "ADD",
     payload: task,

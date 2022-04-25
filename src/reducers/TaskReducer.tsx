@@ -1,14 +1,19 @@
-import React from "react";
-import { Task } from "../models/Task";
+import React, { ReducerState } from "react";
+import { Task, initialStateType } from "../models/Task";
 
-const initialState = {
+// const initialState = {
+//   tasks: [],
+//   addTask: (task: Task) => {},
+// };
+const reducerState: initialStateType = {
   tasks: [],
-  addTask: (task: Task) => {},
 };
 
 type ACTIONTYPE = { type: "ADD"; payload: Task };
 
-const TaskReducer = (state: typeof initialState, action: ACTIONTYPE) => {
+// original code
+// const TaskReducer = (state: typeof initialStateType, action: ACTIONTYPE) => {
+const TaskReducer = (state: typeof reducerState, action: ACTIONTYPE) => {
   switch (action.type) {
     case "ADD": {
       return {

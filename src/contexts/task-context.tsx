@@ -11,7 +11,7 @@ export interface TaskContextObj {
 
 const TaskContext = React.createContext<TaskContextObj>({
   tasks: [],
-  addTask: (task: Task) => {},
+  addTask: () => {},
   //   updateTask: (id: string) => {},
   //   removeTask: (id: string) => {},
   //   doneTask: () => {},
