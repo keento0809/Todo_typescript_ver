@@ -26,6 +26,10 @@ const TaskProvider: React.FC<{ children: ReactNode }> = (props) => {
     dispatch({ type: "ADD", payload: task });
   };
 
+  const handleUpdateTask = (task: Task) => {
+    dispatch({ type: "UPDATE", payload: task });
+  };
+
   const handleRemoveTask = (content: string) => {
     dispatch({ type: "REMOVE", payload: content });
   };
@@ -34,7 +38,7 @@ const TaskProvider: React.FC<{ children: ReactNode }> = (props) => {
     tasks: tasksState.tasks,
     addTask: handleAddTask,
     removeTask: handleRemoveTask,
-    // updateTask: (id: string) => {},
+    updateTask: handleUpdateTask,
     // doneTask: () => {},
   };
 
