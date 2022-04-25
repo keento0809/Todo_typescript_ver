@@ -6,10 +6,12 @@ import { Task } from "../../models/Task";
 const TasksList = () => {
   const taskCtx = useContext(TaskContext);
   const [isEditing, setIsEditing] = useState(false);
+  const [selected, setSelected] = useState(0);
 
   const updateTaskInput = useRef<HTMLInputElement>(null);
 
-  const handleOpenEditForm = (e: any) => {
+  const handleOpenEditForm = (index: number) => {
+    setSelected(index);
     setIsEditing(true);
   };
 
@@ -23,7 +25,6 @@ const TasksList = () => {
       alert("Invalid input");
       return;
     }
-    console.log(enteredTaskContent);
     // I also need to forward enteredTaskContent: string
     taskCtx.updateTask(task, enteredTaskContent);
     setIsEditing(false);
@@ -37,6 +38,8 @@ const TasksList = () => {
     console.log(taskCtx.tasks);
   }, [taskCtx.tasks]);
 
+  console.log(isEditing);
+
   return (
     <ul style={{ listStyle: "none" }}>
       {taskCtx.tasks.map((task, index) => {
@@ -44,7 +47,11 @@ const TasksList = () => {
           <li key={index}>
             <div className="" style={{ minHeight: "30px" }}>
               {!isEditing && <p style={{ margin: 0 }}>{task.content}</p>}
-              {isEditing && (
+              {/* test */}
+              {isEditing && index !== selected && (
+                <p style={{ margin: 0 }}>{task.content}</p>
+              )}
+              {isEditing && index === selected && (
                 <input
                   type="text"
                   placeholder={task.content}
@@ -60,7 +67,7 @@ const TasksList = () => {
             <span
               onClick={
                 !isEditing
-                  ? handleOpenEditForm
+                  ? handleOpenEditForm.bind(null, index)
                   : handleUpdateTask.bind(null, task, task.content)
               }
               style={{
@@ -71,6 +78,7 @@ const TasksList = () => {
                 borderRadius: "8px",
                 cursor: "pointer",
               }}
+              // onKeyDown={handleCheck}s
             >
               {!isEditing ? "Edit" : "UPDATE"}
             </span>
