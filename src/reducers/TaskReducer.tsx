@@ -8,7 +8,9 @@ const reducerState: initialStateType = {
 type ACTIONTYPE =
   | { type: "ADD"; payload: Task }
   | { type: "REMOVE"; payload: string }
-  | { type: "UPDATE"; payload: Task };
+  // original code
+  // | { type: "UPDATE"; payload: Task };
+  | { type: "UPDATE"; payload: Task; content: string };
 
 // original code
 const TaskReducer = (state: typeof reducerState, action: ACTIONTYPE) => {
@@ -19,10 +21,12 @@ const TaskReducer = (state: typeof reducerState, action: ACTIONTYPE) => {
       };
     }
     case "UPDATE": {
+      const updatingContent = action.content;
       const updatingTaskId = action.payload.taskId;
       const updatingTask = state.tasks.find(
         (task) => task.taskId === updatingTaskId
       );
+      updatingTask!.content = updatingContent;
       return {
         tasks: state.tasks,
       };
