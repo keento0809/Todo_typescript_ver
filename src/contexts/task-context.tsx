@@ -5,7 +5,7 @@ export interface TaskContextObj {
   tasks: Task[];
   addTask: (task: Task) => void;
   removeTask: (content: string) => void;
-  updateTask: (task: Task) => void;
+  updateTask: (task: Task, content: string) => void;
   //   doneTask: () => void;
 }
 
