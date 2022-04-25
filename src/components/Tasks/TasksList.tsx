@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import TaskItem from "./TaskItem";
+import TaskContext from "../../contexts/task-context";
 
 const TasksList = () => {
+  const taskCtx = useContext(TaskContext);
+
+  useEffect(() => {
+    console.log(taskCtx.tasks);
+  }, [taskCtx.tasks]);
+
   return (
     <ul style={{ listStyle: "none" }}>
       <li>task a</li>
