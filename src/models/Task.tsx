@@ -4,3 +4,8 @@ export interface Task {
   dueDate: string;
   isDone: boolean;
 }
+
+export type initialStateType = {
+  tasks: Task[];
+  // addTask: (task: Task) => void;
+};
