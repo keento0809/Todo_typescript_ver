@@ -20,25 +20,25 @@ const TasksList = () => {
   const [selected, setSelected] = useState(0);
 
   // declare useRef
-  const updateTaskInput = useRef<HTMLInputElement>(null);
+  const updateTaskInput = React.useRef<HTMLInputElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleOpenEditForm = (index: number) => {
+    console.log("Now,,, open editForm");
     setSelected(index);
     setIsEditing(true);
   };
 
   const handleUpdateTask = (task: Task, content: string) => {
-    const enteredTaskContent = updateTaskInput.current!.value;
-
-    if (
-      enteredTaskContent!.trim().length === 0 ||
-      enteredTaskContent === undefined
-    ) {
+    console.log("Now,,, update task");
+    // original code
+    // const enteredTaskContent = updateTaskInput.current!.value;
+    // test
+    const enteredTaskContent = content;
+    if (enteredTaskContent.length === 0) {
       alert("Invalid input");
       return;
     }
-    // I also need to forward enteredTaskContent: string
     taskCtx.updateTask(task, enteredTaskContent);
     setIsEditing(false);
   };
@@ -76,61 +76,16 @@ const TasksList = () => {
         {/* {taskCtx.tasks.map((task, index) => { */}
         {tasksDisplayed.map((task, index) => {
           return (
-            <li key={index}>
-              <div className="" style={{ minHeight: "30px" }}>
-                {!isEditing && <p style={{ margin: 0 }}>{task.content}</p>}
-                {isEditing && index !== selected && (
-                  <p style={{ margin: 0 }}>{task.content}</p>
-                )}
-                {isEditing && index === selected && (
-                  <input
-                    type="text"
-                    placeholder={task.content}
-                    ref={updateTaskInput}
-                    style={{ display: "block" }}
-                  />
-                )}
-              </div>
-              <span>{task.dueDate}</span>
-              <span
-                onClick={handleDeleteTask.bind(null, task.content)}
-                style={{ cursor: "pointer" }}
-              >
-                {"🗑"}
-              </span>
-              <span
-                onClick={
-                  !isEditing
-                    ? handleOpenEditForm.bind(null, index)
-                    : handleUpdateTask.bind(null, task, task.content)
-                }
-                style={{
-                  display: "inline-block",
-                  padding: "0.2rem 0.8rem",
-                  marginLeft: "1rem",
-                  border: "1px solid #333",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
-              >
-                {/* original code */}
-                {/* {!isEditing ? "Edit" : "UPDATE"} */}
-                {isEditing && index === selected ? "UPDATE" : "Edit"}
-              </span>
-              <span
-                style={{
-                  display: "inline-block",
-                  padding: "0.2rem 0.8rem",
-                  marginLeft: "1rem",
-                  border: "1px solid #333",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
-                // onClick={handleUpdateTask.bind(null, task, task.content)}
-              >
-                {task.isDone ? "✅" : ">DONE"}
-              </span>
-            </li>
+            <TaskItem
+              key={index}
+              isEditing={isEditing}
+              task={task}
+              index={index}
+              selected={selected}
+              handleUpdateTask={handleUpdateTask}
+              handleOpenEditForm={handleOpenEditForm}
+              handleDeleteTask={handleDeleteTask}
+            />
           );
         })}
       </ul>
