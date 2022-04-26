@@ -4,7 +4,7 @@ import TasksList from "./TasksList";
 
 const Tasks = () => {
   return (
-    <div style={{ paddingLeft: "1rem" }}>
+    <div className="pl-4 pr-4">
       <TaskForm />
       <TasksList />
     </div>

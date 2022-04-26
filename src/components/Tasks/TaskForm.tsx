@@ -39,10 +39,11 @@ const TaskForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Add task</h3>
+      <h3 className="text-xl font-bold">Add task</h3>
       {/* <input type="text" ref={taskInputRef} style={{ outline: "none" }} /> */}
       <input
         type="text"
+        style={{ outline: "none" }}
         ref={taskInputRef}
         placeholder="Text here"
         className="input input-bordered input-primary w-full max-w-xs"

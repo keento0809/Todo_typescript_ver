@@ -62,15 +62,20 @@ const TasksList = () => {
   return (
     <Fragment>
       <div>
-        <h3>Search task</h3>
+        <h3 className="text-xl font-bold">Search task</h3>
         <input
           type="text"
           ref={searchInputRef}
           style={{ outline: "none" }}
+          placeholder="Search"
           onChange={handleCheckSearchWord}
+          className="input input-bordered input-primary w-full max-w-xs"
         />
       </div>
-      <ul className="fond-bold" style={{ listStyle: "none", paddingLeft: 0 }}>
+      <ul
+        className="fond-bold overflow-scroll pl-0 list-none"
+        style={{ maxHeight: "600px " }}
+      >
         {tasksDisplayed.length === 0 && <p>No tasks found.</p>}
         {/* original code */}
         {/* {taskCtx.tasks.map((task, index) => { */}
