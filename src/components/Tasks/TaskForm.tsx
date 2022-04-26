@@ -40,9 +40,14 @@ const TaskForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h3>Add task</h3>
-      <input type="text" ref={taskInputRef} style={{ outline: "none" }} />
-      <button>ADD</button>
-      <button className="btn btn-outline btn-info">Info</button>
+      {/* <input type="text" ref={taskInputRef} style={{ outline: "none" }} /> */}
+      <input
+        type="text"
+        ref={taskInputRef}
+        placeholder="Text here"
+        className="input input-bordered input-primary w-full max-w-xs"
+      ></input>
+      <button className="btn btn-outline btn-primary">ADD</button>
     </form>
   );
 };
