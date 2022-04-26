@@ -70,7 +70,7 @@ const TasksList = () => {
           onChange={handleCheckSearchWord}
         />
       </div>
-      <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+      <ul className="fond-bold" style={{ listStyle: "none", paddingLeft: 0 }}>
         {tasksDisplayed.length === 0 && <p>No tasks found.</p>}
         {/* original code */}
         {/* {taskCtx.tasks.map((task, index) => { */}

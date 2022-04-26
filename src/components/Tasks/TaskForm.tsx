@@ -42,6 +42,7 @@ const TaskForm = () => {
       <h3>Add task</h3>
       <input type="text" ref={taskInputRef} style={{ outline: "none" }} />
       <button>ADD</button>
+      <button className="btn btn-outline btn-info">Info</button>
     </form>
   );
 };
