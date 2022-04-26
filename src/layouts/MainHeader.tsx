@@ -10,7 +10,9 @@ const MainHeader = () => {
         lineHeight: "40px",
       }}
     >
-      TypescriptTodo
+      <div className="" style={{ paddingLeft: "1rem" }}>
+        TypescriptTodo
+      </div>
     </header>
   );
 };
