@@ -1,13 +1,11 @@
 import React from "react";
 import TaskForm from "./TaskForm";
-import SearchTask from "./SearchTask";
 import TasksList from "./TasksList";
 
 const Tasks = () => {
   return (
-    <div>
+    <div style={{ paddingLeft: "1rem" }}>
       <TaskForm />
-      {/* <SearchTask /> */}
       <TasksList />
     </div>
   );

@@ -62,6 +62,7 @@ const TasksList = () => {
   return (
     <Fragment>
       <div>
+        <h3>Search task</h3>
         <input
           type="text"
           ref={searchInputRef}
@@ -69,7 +70,7 @@ const TasksList = () => {
           onChange={handleCheckSearchWord}
         />
       </div>
-      <ul style={{ listStyle: "none" }}>
+      <ul style={{ listStyle: "none", paddingLeft: 0 }}>
         {tasksDisplayed.length === 0 && <p>No tasks found.</p>}
         {/* original code */}
         {/* {taskCtx.tasks.map((task, index) => { */}
@@ -91,7 +92,10 @@ const TasksList = () => {
                 )}
               </div>
               <span>{task.dueDate}</span>
-              <span onClick={handleDeleteTask.bind(null, task.content)}>
+              <span
+                onClick={handleDeleteTask.bind(null, task.content)}
+                style={{ cursor: "pointer" }}
+              >
                 {"🗑"}
               </span>
               <span

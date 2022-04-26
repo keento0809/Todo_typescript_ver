@@ -39,6 +39,7 @@ const TaskForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h3>Add task</h3>
       <input type="text" ref={taskInputRef} style={{ outline: "none" }} />
       <button>ADD</button>
     </form>
