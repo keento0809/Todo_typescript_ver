@@ -16,8 +16,8 @@ const TaskForm = () => {
     }
     return newId;
   }
-
-  const handleSubmit = (event: React.FormEvent) => {
+  // event: React.FormEvent
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("WTF");
 
@@ -38,15 +38,14 @@ const TaskForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="py-4">
       <h3 className="text-xl font-bold">Add task</h3>
-      {/* <input type="text" ref={taskInputRef} style={{ outline: "none" }} /> */}
       <input
         type="text"
         style={{ outline: "none" }}
         ref={taskInputRef}
         placeholder="Text here"
-        className="input input-bordered input-primary w-full max-w-xs"
+        className="input input-bordered input-primary w-full max-w-xs p-2"
       ></input>
       <button className="btn btn-outline btn-primary">ADD</button>
     </form>

@@ -73,7 +73,7 @@ const TasksList = () => {
         />
       </div>
       <ul
-        className="fond-bold overflow-scroll pl-0 list-none"
+        className="fond-bold overflow-scroll pl-0 list-none rounded-xl py-8"
         style={{ maxHeight: "600px " }}
       >
         {tasksDisplayed.length === 0 && <p>No tasks found.</p>}

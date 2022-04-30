@@ -8,8 +8,6 @@ const reducerState: initialStateType = {
 type ACTIONTYPE =
   | { type: "ADD"; payload: Task }
   | { type: "REMOVE"; payload: string }
-  // original code
-  // | { type: "UPDATE"; payload: Task };
   | { type: "UPDATE"; payload: Task; content: string };
 
 // original code

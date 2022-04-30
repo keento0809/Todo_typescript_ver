@@ -1,13 +1,5 @@
 import React from "react";
-import { Task } from "../models/Task";
-
-export interface TaskContextObj {
-  tasks: Task[];
-  addTask: (task: Task) => void;
-  removeTask: (content: string) => void;
-  updateTask: (task: Task, content: string) => void;
-  //   doneTask: () => void;
-}
+import { Task, TaskContextObj } from "../models/Task";
 
 const TaskContext = React.createContext<TaskContextObj>({
   tasks: [],
