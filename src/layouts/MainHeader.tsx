@@ -2,34 +2,18 @@ import React from "react";
 
 const MainHeader = () => {
   return (
-    // <header
-    //   style={{
-    //     minHeight: "40px",
-    //     background: "#787878",
-    //     color: "#fff",
-    //     lineHeight: "40px",
-    //   }}
-    // >
-    //   <div className="" style={{ paddingLeft: "1rem" }}>
-    //     TypescriptTodo
-    //   </div>
-    // </header>
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 bg-primary">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">TypescriptTodo</a>
+        <a className="btn btn-ghost normal-case text-xl text-white">
+          TypescriptTodo
+        </a>
       </div>
       <div className="flex-none gap-2">
-        <div className="form-control">
-          {/* <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered"
-          /> */}
-        </div>
+        <div className="form-control"></div>
         <div className="dropdown dropdown-end">
           <label tab-index="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=33791" />
+              {/* <img src="https://api.lorem.space/image/face?hash=33791" /> */}
             </div>
           </label>
           <ul

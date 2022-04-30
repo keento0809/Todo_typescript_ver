@@ -1,28 +1,17 @@
 import React, { ReactNode, useReducer } from "react";
 import TaskContext from "./task-context";
 import TaskReducer from "../reducers/TaskReducer";
-import { TaskContextObj } from "./task-context";
+import { TaskContextObj } from "../models/Task";
 import { add } from "../actions/task-actions";
-import { Task, initialStateType } from "../models/Task";
+import { Task, initialStateType, PropsChildren } from "../models/Task";
 
-// type children = {
-//   children: ReactNode;
-// };
-// type Props = {
-//   children: JSX.Element;
-// };
-
-// original code
-// const TaskProvider: React.FC<> = ({ children }: Props) => {
-const TaskProvider: React.FC<{ children: ReactNode }> = (props) => {
+const TaskProvider: React.FC<PropsChildren> = ({ children }) => {
   const initialState: initialStateType = {
     tasks: [],
   };
   const [tasksState, dispatch] = useReducer(TaskReducer, initialState);
 
   const handleAddTask = (task: Task) => {
-    // original code
-    // dispatch(add(task));
     dispatch({ type: "ADD", payload: task });
   };
 
@@ -44,7 +33,7 @@ const TaskProvider: React.FC<{ children: ReactNode }> = (props) => {
 
   return (
     <TaskContext.Provider value={taskContextValue}>
-      {props.children}
+      {children}
     </TaskContext.Provider>
   );
 };

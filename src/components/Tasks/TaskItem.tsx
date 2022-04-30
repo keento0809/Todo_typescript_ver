@@ -1,49 +1,49 @@
 import React, { useRef, useState } from "react";
-import { Task } from "../../models/Task";
+import { Task, TaskItemType } from "../../models/Task";
 
-const TaskItem: React.FC<{
-  isEditing: boolean;
-  task: Task;
-  index: number;
-  selected: number;
-  handleUpdateTask: (task: Task, content: string) => void;
-  handleOpenEditForm: (index: number) => void;
-  handleDeleteTask: (content: string) => void;
-}> = (props) => {
+const TaskItem: React.FC<TaskItemType> = ({
+  isEditing,
+  task,
+  index,
+  selected,
+  handleUpdateTask,
+  handleOpenEditForm,
+  handleDeleteTask,
+}) => {
   // declare useRef
   const updateTaskInput = useRef<HTMLInputElement>(null);
   // declare useState
   const [testInput, setTestInput] = useState("");
 
-  const handleTesting = () => {
+  const handleCheckTextInput = () => {
     setTestInput(updateTaskInput.current!.value);
   };
 
   return (
     <div>
-      <div className="card どこからマージンrightきた w-100 bg-base-100 shadow-xl mb-4">
+      <div className="card w-100 bg-primary shadow-xl mb-4">
         <div className="card-body">
           <div className="min-h-12">
-            {!props.isEditing && (
-              <h2 className="card-title">{props.task.content}</h2>
+            {!isEditing && (
+              <h2 className="card-title text-white text-2xl">{task.content}</h2>
             )}
-            {props.isEditing && props.index !== props.selected && (
-              <h2 className="card-title">{props.task.content}</h2>
+            {isEditing && index !== selected && (
+              <h2 className="card-title text-white text-2xl">{task.content}</h2>
             )}
-            {props.isEditing && props.index === props.selected && (
+            {isEditing && index === selected && (
               <input
                 type="text"
-                placeholder={props.task.content}
-                onChange={handleTesting}
+                placeholder={task.content}
+                onChange={handleCheckTextInput}
                 ref={updateTaskInput}
-                className="input input-bordered input-primary w-full max-w-xs"
+                className="input input-bordered input-primary w-full max-w-xs bg-secondary text-white text-2xl"
               />
             )}
           </div>
-          <p>Until {props.task.dueDate}</p>
+          <p className="text-white">Until {task.dueDate}</p>
           <div className="card-actions justify-end">
             <span
-              onClick={props.handleDeleteTask.bind(null, props.task.content)}
+              onClick={handleDeleteTask.bind(null, task.content)}
               style={{
                 cursor: "pointer",
                 lineHeight: "48px",
@@ -53,25 +53,17 @@ const TaskItem: React.FC<{
               {"🗑"}
             </span>
             <button
-              className="btn btn-outline btn-primary"
+              className="btn btn-outline btn-secondary"
               onClick={
-                !props.isEditing
-                  ? props.handleOpenEditForm.bind(null, props.index)
-                  : props.handleUpdateTask.bind(
-                      null,
-                      props.task,
-                      // original code
-                      // props.task.content
-                      testInput
-                    )
+                !isEditing
+                  ? handleOpenEditForm.bind(null, index)
+                  : handleUpdateTask.bind(null, task, testInput)
               }
             >
-              {props.isEditing && props.index === props.selected
-                ? "UPDATE"
-                : "Edit"}
+              {isEditing && index === selected ? "UPDATE" : "Edit"}
             </button>
-            <button className="btn btn-outline btn-primary">
-              {props.task.isDone ? "✅" : "DONE"}
+            <button className="btn btn-outline btn-secondary">
+              {task.isDone ? "✅" : "DONE"}
             </button>
           </div>
         </div>
